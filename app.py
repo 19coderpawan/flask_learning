@@ -2,11 +2,12 @@ from flask import Flask;
 
 app=Flask(__name__)
 
-@app.route('/')
+#decorator.
+@app.route('/',methods=['GET']) 
 def home():
     return "hello world my name is pawan"
 
-@app.route('/about')
+@app.route('/about',methods=['GET'])
 def about():
     return "this is about page"
 
