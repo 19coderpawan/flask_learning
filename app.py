@@ -9,7 +9,7 @@ def home():
 
 @app.route('/about',methods=['GET'])
 def about():
-    return "this is about page"
+    return "<h1>this is about page</h1>"
 
 if __name__=="__main__":
     app.run(debug=True)
