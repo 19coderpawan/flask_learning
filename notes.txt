@@ -1,0 +1,60 @@
+**✅Decorator**
+     “A decorator is used to specify or modify the behavior of a function.”
+     “Decorators in Flask define the rules for how a function handles web requests.
+      example-: @app.route().
+      In Flask specifically, decorators are used to tell Flask how and when to use that function.
+
+          ✔️ They register the function to a specific URL
+          ✔️ They specify which HTTP methods are allowed
+          ✔️ They add pre- or post-processing logic
+          ✔️ They handle errors
+          ✔️ They enforce security rules
+
+**✅ What are HTTP methods?**
+           When a client (like a browser) sends a request to your server, it uses an HTTP method to say what it wants to do.
+
+           The most common methods are:
+
+           Method	What it means
+           GET	“Get data from the server.”
+           POST	“Send data to the server.”
+           PUT	“Update data on the server.”
+           DELETE	“Delete data from the server.”
+           PATCH	“Partially update data on the server.”
+
+**✅You can also add html tags in your python files ,like in your app.py file if you hit your home route then you want 
+    your decorator function for that route to return something as response like "hello world". and this response you can
+    can wrap in any html tag like "<h1> hello world</h1>".
+
+**✅📌 What Are Templates in Flask?
+         ✅ Flask uses templates to generate HTML dynamically.
+         ✅ Instead of static HTML, you use variables, loops, and conditions.
+         ✅ Flask's templating engine is Jinja2.    
+
+    ✅ ⭐️ Typical Flow:
+        1️⃣ User requests a page (/about)
+        2️⃣ Flask renders a template (about.html)
+        3️⃣ Data (variables) is passed to the template
+        4️⃣ HTML page is sent back with data filled in     
+
+    ✅ 📌 Jinja2 Basics
+
+           Inside templates you can use:
+
+           ✅ Variables:
+           <h1>Hello, {{ name }}</h1>
+
+           ✅ Conditionals:
+           {% if user %}
+             <p>Welcome, {{ user }}!</p>
+           {% else %}
+             <p>Guest</p>
+           {% endif %}
+
+           ✅ Loops:
+           <ul>
+           {% for item in items %}
+             <li>{{ item }}</li>
+           {% endfor %}
+           </ul>
+    
