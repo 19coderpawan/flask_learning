@@ -1,0 +1,18 @@
+⭐ You’re importing three things from the Flask library:
+
+          1.Flask — the main class to create your web app.
+
+          2.render_template — a helper function to render HTML templates with variables.
+
+          4.request — an object that contains all data about the incoming HTTP request 
+           (like query parameters, form data, headers).
+
+ ⭐name=request.args.get('name','Guest') 
+      --> ✔️ request is the incoming HTTP request object.
+          ✔️ request.args gives access to query parameters in the URL.   
+             what it is doing is -->If name parameter is given, use it.
+                                    If not, default to 'Guest'.   
+
+ ⭐ /about?name=pawan--> this is how you pass a parameter in a url.    
+
+ ⭐ {{name}} --> this is how you use the variable value( parameter passed ) in the html file.                               
