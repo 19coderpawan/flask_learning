@@ -1,10 +1,19 @@
-from flask import Flask
+from flask import Flask,request
 
 app=Flask(__name__)
 
-@app.route("/home/<username>") # defining route variable in decorator.
-def home(username): # here whatever value is in the <> brackets passed in the url dynamic part will be passed to fun.
-    return f"Welcom to home page {username} " # this is how you access it .
+# @app.route("/home/<username>") # defining route variable in decorator.
+# def home(username): # here whatever value is in the <> brackets passed in the url dynamic part will be passed to fun.
+#     return f"Welcom to home page {username} " # this is how you access it .
+# another way-:
+@app.route("/home")
+def home():
+    name=request.args.get('name','Guest') # for this the pattern is /home?name
+    return f"hello {name} welcome to home page"
+
+@app.route("/userage/<int:age>")
+def userage(age):
+    return f"your age is {age}"
 
 
 if __name__=="__main__":

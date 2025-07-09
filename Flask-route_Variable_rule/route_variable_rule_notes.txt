@@ -26,4 +26,23 @@ You define route variables using angle brackets (<>) in your @app.route() decora
                       if username:
                           return f"Hello, {username}!"
                       else:
-                          return "Hello, Guest!"        
+                          return "Hello, Guest!"   
+
+
+✅ 📌 3️⃣ Variable Rules: Default Type (string)
+        By default, route variables are strings.
+        
+✅ 📌 4️⃣ Specifying Variable Types
+         Flask lets you enforce types in routes:
+
+         ✅ Syntax:
+         <type:variable>
+
+         ✅ Supported types:
+
+         Type	Example Match
+         string	(default) any text
+         int	     integers only
+         float	floating-point numbers
+         path	string with slashes
+         uuid	UUID strings
