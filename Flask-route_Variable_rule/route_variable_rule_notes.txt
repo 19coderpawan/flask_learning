@@ -1,0 +1,20 @@
+** Notes of variable rules in Flask **
+
+
+✅ 📌 1️⃣ What are “variables” in Flask routes?
+Flask routes can have dynamic parts — called route variables.
+
+Flask route variable rules — i.e., how to define and use variables in your Flask URL routes.
+
+✅ 📌 2️⃣ Defining Route Variables-:
+You define route variables using angle brackets (<>) in your @app.route() decorator.
+    Imp-: What if you dont pass the parameter here -:
+                 @app.route("/home/<username>") # defining route variable in decorator.
+                 def home(username): # here whatever value is in the <> brackets passed in the url dynamic part will be passed to fun.
+                 return f"Welcom to home page {username}
+          then the flask will show 404 error not found page. because flask follows the exact pattern as in the route.
+          however, there are several other way to handle it like -:
+                   @app.route("/home")
+                   def home():
+                   name=request.args.get('name','Guest')
+                   return f"hello {name}"       
