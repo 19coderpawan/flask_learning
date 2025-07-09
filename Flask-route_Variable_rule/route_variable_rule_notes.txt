@@ -12,9 +12,18 @@ You define route variables using angle brackets (<>) in your @app.route() decora
                  @app.route("/home/<username>") # defining route variable in decorator.
                  def home(username): # here whatever value is in the <> brackets passed in the url dynamic part will be passed to fun.
                  return f"Welcom to home page {username}
-          then the flask will show 404 error not found page. because flask follows the exact pattern as in the route.
-          however, there are several other way to handle it like -:
-                   @app.route("/home")
+
+          -->then the flask will show 404 error not found page. because flask follows the exact pattern as in the route.
+          -->however, there are several other way to handle it like -:
+                 1.  @app.route("/home")
                    def home():
                    name=request.args.get('name','Guest')
-                   return f"hello {name}"       
+                   return f"hello {name}" 
+
+                 2. @app.route('/user/')
+                    @app.route('/user/<username>')
+                    def show_user(username=None):
+                      if username:
+                          return f"Hello, {username}!"
+                      else:
+                          return "Hello, Guest!"        
