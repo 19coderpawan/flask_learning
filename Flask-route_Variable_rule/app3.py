@@ -15,6 +15,10 @@ def home():
 def userage(age):
     return f"your age is {age}"
 
+@app.route("/name/<name>/age/<int:age>") # way to define multiple route variable.
+def name(name,age):
+    return f"your name is {name} and your age is {age} "
+
 
 if __name__=="__main__":
     app.run(debug=True)
