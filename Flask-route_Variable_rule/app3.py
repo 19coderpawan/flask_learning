@@ -19,10 +19,11 @@ def userage(age):
 @app.route("/name/<name>/age/<int:age>") # way to define multiple route variable.
 def name(name,age):
     return f"your name is {name} and your age is {age} "
-@app.route("/gen_uuid")
-def gen_uuid():
-    uid=uuid.uuid4()
-    return f"the uuid is {uid}"
+@app.route("/gen_uuid/<uuid:id>") #when user pass uuid in url.
+def gen_uuid(id):
+    return f"your uuid is {id}"
+    # uid=uuid.uuid4() #generates the uuid .
+    # return f"the uuid is {uid}"
 
 
 if __name__=="__main__":
