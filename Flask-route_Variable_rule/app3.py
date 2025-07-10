@@ -1,4 +1,5 @@
 from flask import Flask,request
+import uuid
 
 app=Flask(__name__)
 
@@ -18,6 +19,10 @@ def userage(age):
 @app.route("/name/<name>/age/<int:age>") # way to define multiple route variable.
 def name(name,age):
     return f"your name is {name} and your age is {age} "
+@app.route("/gen_uuid")
+def gen_uuid():
+    uid=uuid.uuid4()
+    return f"the uuid is {uid}"
 
 
 if __name__=="__main__":
