@@ -1,0 +1,26 @@
+📌****In this ,we have learned how to create api, how to access the json data in flask and how to test the api using 
+   postman.****
+
+   ⭐️ What is an API?
+✅ API = Application Programming Interface
+      ⭐️ It’s a way for different programs to talk to each other.
+
+
+⭐️ How Does Flask Help?
+✅ Flask can build APIs:
+✔️ Your Flask app can:
+Receive HTTP requests (GET, POST, etc.)
+Return data in JSON.
+
+⭐️How to Make an API in Flask
+@app.route('/api/hello')
+def hello_api():
+    return jsonify({"message": "Hello, API!"})
+
+
+⭐️JSON in Flask
+✔️ jsonify()-:
+Converts Python dict/list → JSON response.
+
+✔️ request.get_json()-:
+Reads JSON request body → Python dict. (automatically parse from json format to dict)
