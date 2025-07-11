@@ -38,8 +38,15 @@
         4️⃣ HTML page is sent back with data filled in     
 
     ✅ 📌 Jinja2 Basics
+          Jinja2 is a templating engine for Python.
 
-           Inside templates you can use:
+          1. Used in Flask to generate dynamic HTML pages.
+          2. Lets you insert variables, loops, conditions into HTML.
+          3. Think of it as HTML + Python-like code.
+
+
+
+           ****Inside html templates you can use:***
 
            ✅ Variables:
            <h1>Hello, {{ name }}</h1>
@@ -57,4 +64,24 @@
              <li>{{ item }}</li>
            {% endfor %}
            </ul>
+
+           ✅Modify variables using filters.
+
+                Example:
+                <p>{{ name.upper() }}</p>
+                Result:
+                  PAWAN
+           ✅  Comments
+               Non-rendered notes in template.
+                ✅ Syntax:
+                 {# This is a Jinja2 comment #} 
+
+
+           ✅  Passing Multiple Variables
+                Flask route:
+                return render_template('profile.html', name='Pawan', age=25)
+                
+                ✅ Template:
+                <h2>{{ name }}</h2>
+                <p>Age: {{ age }}</p>          
     
