@@ -1,0 +1,7 @@
+⭐️ 1️⃣ What is SQLAlchemy?
+      ⭐️SQLAlchemy is an open-source Python library. It is an ORM(object Relational Mapper) which maps Relational
+        tables to python classes and objects.That means,You work with Python classes and objects, not raw SQL.
+      ⭐️It helps python (here, flask) talk/interact to a relational database (like SQLite or PostgreSQL).
+      ⭐️It combines the power of python with SQL.
+
+      
