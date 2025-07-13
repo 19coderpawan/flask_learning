@@ -23,5 +23,33 @@
 ✅ Analogy:
 ->The engine is your car. conn is starting the engine so you can drive.
 
-3.metadata=db.MetaData()
+4.metadata=db.MetaData()
+✅ Explanation:
+->MetaData is a container to hold information about your tables.
+ You can think of it as your database schema blueprint.
+
+5.Student=db.Table("student",metadata,
+                 db.Column('id',db.Integer(),primary_key=True),
+                 db.Column('name',db.String(20),nullable=False),
+                 db.Column('branch',db.String(20),nullable=False))
+✅ Explanation:
+->This defines a table called "student" in Python code.
+It's not yet created in the database — you're describing its structure.
+
+✅ Column definitions:
+->'id': Integer, primary key (unique, auto-increment in SQLite).
+->'name': String of max length 20, cannot be null.
+->'branch': String of max length 20, cannot be null.
+
+✅ Analogy:
+->You’re drafting the design of your "student" table before building it. 
+
+6.metadata.create_All(engine)
+✅ Explanation:
+->This command actually creates all tables in metadata (here, just "student") in the database. 
+ It checks if the table exists first — it won’t recreate or overwrite existing tables.
+
+✅ Analogy:
+You take your blueprint (metadata) and tell the builder (engine): "build this table in the database file."
+
 
