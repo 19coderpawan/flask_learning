@@ -4,4 +4,31 @@
       ⭐️It helps python (here, flask) talk/interact to a relational database (like SQLite or PostgreSQL).
       ⭐️It combines the power of python with SQL.
 
-      
+      📌 Part 2:-
+           ✅ SQLAlchemy is a Python library for working with databases.
+
+           ✅It has two main parts:
+
+            1️⃣ SQLAlchemy Core (lower-level) "(to understand the working go to  folder SQLAlchemy_core_demo )"
+                Works with SQL directly but in a Pythonic way.
+                You define tables, columns, and write queries in Python code.
+
+            2️⃣ SQLAlchemy ORM (Object Relational Mapper) (higher-level)
+                Lets you map Python classes to database tables.
+                Makes querying feel like using objects.
+
+             Differnce-:
+            ✅ SQLAlchemy Core
+
+                 1.Low-level, explicit
+                 2.You describe tables, columns, SQL statements directly in Python
+                 3.Closer to writing raw SQL, but safer and structured
+                 Use case-:Scripting, data migrations, ETL, complex SQL
+                 
+            ✅ SQLAlchemy ORM
+                 
+                 1.High-level, object-oriented
+                 2.You map Python classes to database tables
+                 3.Lets you work with Python objects instead of SQL rows  
+                 Use case-:Business apps, REST APIs, Flask/Django apps  
+

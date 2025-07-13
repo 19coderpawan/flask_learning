@@ -1,0 +1,27 @@
+1."import sqlalchemy as db
+    print(db.__version__)"
+
+✅ Explanation:
+->import sqlalchemy as db: imports the SQLAlchemy library and aliases it as db for easy use.
+->print(db.__version__): prints the installed version of SQLAlchemy. Good for checking your environment.
+
+2."engine=db.create_engine("sqlite:///Student.db")"
+✅ Explanation:
+    ->create_engine is the central object for connecting to databases in SQLAlchemy.
+
+    ->"sqlite:///Student.db" is the connection URL.
+       sqlite is the dialect (database type).
+
+    ->/// means “this is a file on disk.”
+    ->Student.db is the filename (SQLite will create this if it doesn't exist).
+
+3.conn=engine.connect()    
+✅ Explanation:
+->Opens an actual connection to the database using the engine.
+  You use conn to execute SQL statements.
+
+✅ Analogy:
+->The engine is your car. conn is starting the engine so you can drive.
+
+3.metadata=db.MetaData()
+
