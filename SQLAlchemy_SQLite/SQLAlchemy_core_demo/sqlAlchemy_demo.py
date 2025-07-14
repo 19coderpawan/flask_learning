@@ -12,3 +12,15 @@ Student=db.Table("student",metadata,
                  db.Column('branch',db.String(20),nullable=False))
 
 metadata.create_all(engine)
+
+# lets insert the data in the table.
+# insert_statement=db.insert(Student).values(id=1,name="pawan",branch="mca")
+# result=conn.execute(insert_statement)
+
+# to select the data.
+# result=conn.execute(Student.select()).fetchall()
+result=conn.execute(Student.select().where(Student.c.name=="pawan")).fetchall() #with where clause.
+for row in result:
+    print(f"id={row[0]},name={row[1]},branch={row[2]}")
+    # it will print out the data in console window.
+# conn.commit()
