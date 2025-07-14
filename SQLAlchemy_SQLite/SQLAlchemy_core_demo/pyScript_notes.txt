@@ -52,4 +52,18 @@ It's not yet created in the database — you're describing its structure.
 ✅ Analogy:
 You take your blueprint (metadata) and tell the builder (engine): "build this table in the database file."
 
+7.insert_statement=db.insert(Student).values(id=1,name="pawan",branch="mca")
+->db.insert(Student)-:
+    db.insert() is a function from SQLAlchemy Core that creates an INSERT statement.
+    Student is your Table object (which you defined earlier with columns id, name, branch).
+->This tells SQLAlchemy: "I want to insert into this table."
+->here the insert_statement is just holding the data nothing executed yet.
+
+8.result=conn.execute(insert_statement)
+->conn is your database connection (which you opened earlier).
+->execute() is the method that sends your prepared SQL command to the database.
+
+9.conn.commit()
+->commit() saves your changes to the database permanently.
+
 
