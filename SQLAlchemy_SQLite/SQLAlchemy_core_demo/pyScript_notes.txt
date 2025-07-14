@@ -66,4 +66,19 @@ You take your blueprint (metadata) and tell the builder (engine): "build this ta
 9.conn.commit()
 ->commit() saves your changes to the database permanently.
 
+10.result=conn.execute(Student.select()).fetchall()
+->Student.select()
+Student is your Table object you defined earlier.
+->.select() is a method that creates a SELECT SQL statement for all columns in the table.
+->Fetches all rows from the result set.
+  Returns a list of tuples — each tuple is one row.
+
+11.for row in result:
+    print(f"id={row[0]},name={row[1]},branch={row[2]}")
+->Loops over each tuple in the result.
+->Each row is one record from the query. 
+
+12.update_statement=db.update(Student).where(Student.c.id==1).values(name="pawan kushwaha")
+->this statement updates the name of the student in the Student table whose id is 1.
+
 
