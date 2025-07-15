@@ -1,0 +1,16 @@
+1. First, you need to install the package.
+    pip install flask_sqlalchemy
+
+2.app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+->sqlite:///site.db → will create a local file site.db as your database.    
+->This tells Flask where your database is.
+
+3.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+->Controls whether SQLAlchemy tracks modifications of objects in memory and signals events.
+->Turns off this extra overhead.
+  Makes your app faster.Removes the warning in your terminal.
+
+4.db=SQLAlchemy(app)
+->it connects your application to your database and db is an object here.  
+->Lets you define models (tables as Python classes).
+->Gives you access to db.session to add, update, query, and delete records.

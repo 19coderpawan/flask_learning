@@ -1,3 +1,4 @@
 # this file contains all the dependencies/libraries that is required in the project.
 Flask
 SQLAlchemy
+flask_sqlalchemy
