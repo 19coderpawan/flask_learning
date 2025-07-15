@@ -21,7 +21,7 @@ metadata.create_all(engine)
 # conn.commit()
 
 #to update the row.
-update_statement=db.update(Student).where(Student.c.id==1).values(name="pawan kushwaha")
+update_statement=db.update(Student).where(Student.c.id==1).values(name="pawan kushwaha") #here c is the alias for column.
 conn.execute(update_statement)
 conn.commit()
 
