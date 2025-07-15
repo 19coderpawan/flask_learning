@@ -14,3 +14,44 @@
 ->it connects your application to your database and db is an object here.  
 ->Lets you define models (tables as Python classes).
 ->Gives you access to db.session to add, update, query, and delete records.
+
+5.class Student_table(db.Model):
+    id=db.Column(db.Integer(),primary_key=True)
+    name=db.Column(db.String(20),nullable=False)
+    branch=db.Column(db.String(20),nullable=False)
+
+->A model is a Python class that defines a table in your database.
+
+note(IMP)-: now that you have define a model/table you need to create the database and inside that you will
+            have your table in this case(Student_table).
+            for that go to your current directory where you app.py is located 
+              1.type Python
+              2.from orm_app import db,app
+              3.with app.app_context():
+              4. ...  db.create_all()
+              5. double enter
+              your database will appear in the current directory.
+
+          -->1️⃣ from orm_app import app, db
+             ✔️ orm_app is your Python file (likely named orm_app.py).  
+             app: your Flask application object
+             db: your SQLAlchemy database object    
+
+          -->2️⃣ with app.app_context():
+             ✔️ In Flask, some operations need an application context.
+
+             ⭐ The app context is Flask’s way of:
+                “I know which Flask app is active. I know its config. I know its DB connection.” 
+                app context = “Flask knows what app you mean.”
+
+          -->3️⃣ db.create_all()
+               ✔️ This is a method from Flask-SQLAlchemy.
+
+               ✅ It:
+               ⭐ Looks at all your models you defined with db.Model.
+               ⭐ Figures out the SQL schema.
+               ⭐ Connects to the database (using the URI in your config).
+               ⭐ Runs CREATE TABLE statements if those tables don’t exist yet. 
+               -->create_all() won’t delete or modify existing tables.    
+               -->Creates the database file (if not already present)
+               -->Creates the tables defined in your models (if not already present)   
