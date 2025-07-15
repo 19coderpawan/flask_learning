@@ -1,0 +1,32 @@
+1.In the python shell command-:locate your directory and type this to insert the data in the table.
+>>> from orm_app import Student_table,db,app
+>>> new_student=Student_table(id=1,name="pawan",branch="mca")
+>>> with app.app_context():
+...     db.session.add(new_student)
+...     db.session.commit()
+
+explation-:->>new_student = Student_table(id=1, name="pawan", branch="mca")
+           📌 What it does:
+           Creates a new Python object of type Student_table using your model class.
+           Sets the fields:
+           id = 1
+           name = "pawan"
+           branch = "mca"
+           ✅ Think of it like this:
+           You just created a student record in memory.
+           ⚠️ Nothing is in the database yet!
+           It’s only a Python object for now.
+
+           ->>db.session.add(new_student)
+              ⭐ What it does:
+              Tells SQLAlchemy:
+              “I want to add this new student object to the session.”
+              ✅ But:
+              Nothing is actually written to the DB yet!
+
+           -->db.session.commit()
+                ⭐ What it does:
+                Executes all pending SQL commands in the session.
+                In this case:
+                Runs an INSERT INTO student_table (id, name, branch) VALUES (1, 'pawan', 'mca').
+                ✅ Now your new student is really stored in the database!   
