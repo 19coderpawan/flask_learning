@@ -30,3 +30,21 @@ explation-:->>new_student = Student_table(id=1, name="pawan", branch="mca")
                 In this case:
                 Runs an INSERT INTO student_table (id, name, branch) VALUES (1, 'pawan', 'mca').
                 ✅ Now your new student is really stored in the database!   
+
+2.query to select the data from the table.
+from orm_app import app,db,Student_table
+>>> with app.app_context():
+...     Student_table.query.one()
+
+    explation-:
+        ->Student_table is the SQLAlchemy  modelclass  name you have created.
+        ->query->This is a Query Object SQLAlchemy gives you for that model.it is a select query use to reterive the data.
+        ->one()->reterives only the first record/row.
+       --> when you run this query what happens is that in your bash shell it will display whatever you have define 
+           in the special method __repr__().
+           You can also access the data like student.name,student.id,student.branch irrespective whether you have 
+           __repr__() method.
+       other queries are-:
+          -->query.all()-:reterive all the record from the data.
+          -->query.filter_by(condition).first()-:reterive the data with specific condition.
+          -->query.first()-:reterive the first record from the table.    
