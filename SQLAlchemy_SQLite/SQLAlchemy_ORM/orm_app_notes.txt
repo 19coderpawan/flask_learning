@@ -55,3 +55,24 @@ note(IMP)-: now that you have define a model/table you need to create the databa
                -->create_all() won’t delete or modify existing tables.    
                -->Creates the database file (if not already present)
                -->Creates the tables defined in your models (if not already present)   
+
+
+⭐ """ @app.route("/form",methods=["GET","POST"])
+def form():
+    if request.method=="GET":
+        return  render_template('student_form.html')
+    else:
+        name=request.form['name']
+        branch=request.form['branch']
+
+        new_student=Student_table(name=name,branch=branch)
+        db.session.add(new_student)
+        db.session.commit()
+        return f"Student {name} is registered" """"
+
+
+         📌 Quick Explanation:
+         ✔️ request.form['name'] ➜ grabs form field data.
+         ✔️ Student_table(name=name, branch=branch) ➜ creates DB record.
+         ✔️ db.session.add() ➜ adds to DB session.
+         ✔️ db.session.commit() ➜ saves it in the DB!
