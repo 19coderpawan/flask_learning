@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,request,render_template
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -10,6 +10,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db=SQLAlchemy(app)
 
+#route for form.
+@app.route("/form",methods=["GET"])
+def form():
+    return  render_template('student_form.html')
+
 # Model(table) 
 class Student_table(db.Model):
     id=db.Column(db.Integer(),primary_key=True)
@@ -19,8 +24,10 @@ class Student_table(db.Model):
     # It’s a special Python method:
     # ells Python how to display the object in interactive shell / print() / logs.
     # It’s purely for human-friendly debugging.
-    def __repr__(self):
-        return f"<Student{self.name}>"
+    # def __repr__(self):
+    #     return f"<Student{self.name}>"
+    
+
 
 if __name__=="__main__":
     app.run(debug=True)

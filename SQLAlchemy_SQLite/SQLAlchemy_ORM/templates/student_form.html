@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <titl>Student form</titl>
+    </head>
+    <body>
+        <form action="{{url_for('form')}}" method="POST">
+            <input type="text" name="name" placeholder="enter your name" required="required"/>
+            <input type="text" name="branch" placeholder="enter your branch" required="required"/>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
