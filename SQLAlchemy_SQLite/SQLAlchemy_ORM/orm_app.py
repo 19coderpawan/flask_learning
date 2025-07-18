@@ -11,9 +11,18 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
 
 #route for form.
-@app.route("/form",methods=["GET"])
+@app.route("/form",methods=["GET","POST"])
 def form():
-    return  render_template('student_form.html')
+    if request.method=="GET":
+        return  render_template('student_form.html')
+    else:
+        name=request.form['name']
+        branch=request.form['branch']
+
+        new_student=Student_table(name=name,branch=branch)
+        db.session.add(new_student)
+        db.session.commit()
+        return f"Student {name} is registered"
 
 # Model(table) 
 class Student_table(db.Model):
