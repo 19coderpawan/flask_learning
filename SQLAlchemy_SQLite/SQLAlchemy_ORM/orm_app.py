@@ -1,4 +1,4 @@
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,redirect,url_for
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -22,7 +22,15 @@ def form():
         new_student=Student_table(name=name,branch=branch)
         db.session.add(new_student)
         db.session.commit()
-        return f"Student {name} is registered"
+        # return f"Student {name} is registered"
+        return redirect(url_for('home'))
+        
+
+#route to display name of student in home page.
+@app.route("/",methods=["GET"])
+def home():
+    student_data=Student_table.query.all()
+    return render_template('home.html',student_data=student_data)    
 
 # Model(table) 
 class Student_table(db.Model):

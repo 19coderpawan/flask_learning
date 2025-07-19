@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student list</title>
+    </head>
+    <body>
+        <h1>Student List</h1>
+        <ul>
+        {% for student in student_data%}
+        <li>{{student.name}}----{{student.branch}}</li>
+        {% endfor %}
+        </ul>
+
+        <a href="{{url_for('form')}}">ADD new Student</a>
+    </body>
+</html>
