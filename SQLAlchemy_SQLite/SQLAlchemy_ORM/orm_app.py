@@ -43,6 +43,14 @@ def edit(id):
         redirect(url_for('home'))
     return render_template('edit.html',student_data=student_data)
 
+#route to delete studetn record.
+@app.route("/delete/<int:id>")
+def delete(id):
+    student_data=Student_table.query.get_or_404(id)
+    db.session.delete(student_data)
+    db.session.commit()
+    return redirect(url_for('home'))
+
 # Model(table) 
 class Student_table(db.Model):
     id=db.Column(db.Integer(),primary_key=True)
