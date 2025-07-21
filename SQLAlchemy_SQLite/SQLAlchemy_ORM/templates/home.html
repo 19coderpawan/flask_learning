@@ -8,6 +8,7 @@
         <ul>
         {% for student in student_data%}
         <li>{{student.name}}----{{student.branch}}</li>
+        <a href="{{url_for('edit',id=student.id)}}">edit</a>
         {% endfor %}
         </ul>
 
