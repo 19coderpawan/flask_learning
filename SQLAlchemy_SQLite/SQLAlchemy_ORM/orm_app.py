@@ -36,6 +36,11 @@ def home():
 @app.route("/edit/<int:id>",methods=["GET","POST"])
 def edit(id):
     student_data=Student_table.query.get_or_404(id)
+    if request.method=="POST":
+        student_data.name=request.form['name']
+        student_data.branch=request.form['branch']
+        db.session.commit()
+        redirect(url_for('home'))
     return render_template('edit.html',student_data=student_data)
 
 # Model(table) 

@@ -4,10 +4,11 @@
         <title>edit page</title>
     </head>
     <body>
-        <form method="POST">
+        <form  method="POST">
             <input type="text" name="name" value="{{student_data.name}}" required="required"/>
             <input type="text" name="branch" value="{{student_data.branch}}" required="required"/>
             <button type="submit">Edit</button>
         </form>
+        <a href="{{url_for('home')}}">Back to Home</a>
     </body>
 </html>
