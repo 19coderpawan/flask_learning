@@ -40,7 +40,7 @@ def edit(id):
         student_data.name=request.form['name']
         student_data.branch=request.form['branch']
         db.session.commit()
-        redirect(url_for('home'))
+        return redirect(url_for('home'))
     return render_template('edit.html',student_data=student_data)
 
 #route to delete studetn record.

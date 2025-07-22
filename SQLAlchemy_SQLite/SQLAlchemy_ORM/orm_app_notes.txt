@@ -76,3 +76,59 @@ def form():
          ✔️ Student_table(name=name, branch=branch) ➜ creates DB record.
          ✔️ db.session.add() ➜ adds to DB session.
          ✔️ db.session.commit() ➜ saves it in the DB!
+
+⭐#route to display name of student in home page.
+@app.route("/",methods=["GET"])
+def home():
+    student_data=Student_table.query.all()
+    return render_template('home.html',student_data=student_data)       
+
+    🔸 Explanation:
+        This is a route decorator in Flask.
+        @app.route("/") maps the root URL (http://yourdomain.com/) to the function right below it (home()).
+        methods=["GET"] means this route only responds to HTTP GET requests (default browser visits).   
+
+
+       Explanation:
+        This line fetches all the records from the Student_table database table using SQLAlchemy ORM.
+        Student_table.query.all() returns a list of all student records as Python objects.
+        The result is stored in the variable student_data.
+
+
+⭐⭐#route to edit the data of student.
+@app.route("/edit/<int:id>",methods=["GET","POST"])
+def edit(id):
+    student_data=Student_table.query.get_or_404(id)
+    if request.method=="POST":
+        student_data.name=request.form['name']
+        student_data.branch=request.form['branch']
+        db.session.commit()
+        redirect(url_for('home'))
+    return render_template('edit.html',student_data=student_data)   
+
+
+       student_data = Student_table.query.get_or_404(id)
+         🔸 Explanation:
+              This line fetches the student record from the database where id matches.
+              get_or_404(id) is a shortcut that:
+                 Returns the student object if found.
+                 Otherwise, automatically returns a 404 error page if the student doesn't exist.
+
+      if request.method == "POST":
+        🔸 Explanation:
+          Checks if the incoming request is a POST request (i.e., form submitted).
+          If it’s a GET, it will skip this block and just render the form.
+
+
+        student_data.name = request.form['name']
+        student_data.branch = request.form['branch']
+            🔸 Explanation:
+            These two lines update the student's name and branch using form data.
+            request.form['name'] fetches the submitted value from the form input with name="name".
+            It then updates the existing student object (student_data) with the new values.
+
+        db.session.commit()
+         🔸 Explanation:
+         This commits the changes to the database.
+         Without this line, the updated values will not be saved.  
+        
