@@ -4,6 +4,7 @@ app=Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///emp.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
+app.config['SECRET_KEY'] = 'mysecretkey'  # Required for CSRF
 
 db=SQLAlchemy(app)
 
@@ -12,6 +13,26 @@ class Employee_table(db.Model):
     name=db.Column(db.String(20),nullable=False)
     department=db.Column(db.String(30),nullable=False)
 
+#home route
+@app.route('/',methods=['GET'])
+def home():
+    emp_data=Employee_table.query.all()
+    return render_template('home.html',emp_data=emp_data)
+
+@app.route('/add',methods=['GET','POST'])
+def add():
+    pass
+
+@app.route('/edit/<int:id>',methods=['GET','POST'])
+def edit():
+    pass
+
+@app.route('/delete/<int:id>',methods=['POST'])
+def delete():
+    emp_data=Employee_table.query.get_or_404(id)
+    db.session.delete(emp_data)
+    db.session.commit()
+    return redirect(url_for('home'))
 
 
 
