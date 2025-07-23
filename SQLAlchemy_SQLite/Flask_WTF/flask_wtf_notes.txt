@@ -1,0 +1,46 @@
+🔹 What is WTForms (WTF)?
+     WTForms is a Python library for creating and validating web forms using Python classes.
+     ✅ Definition:
+     WTForms is a flexible form rendering and validation library for Python web development.
+
+🔹 What is Flask-WTF?
+    Flask-WTF is a Flask extension that integrates WTForms with Flask.
+    ✅ Definition:
+    Flask-WTF simplifies the use of WTForms in Flask applications and adds features like CSRF protection, 
+    file upload handling, and integration with Flask’s request and session.
+
+
+💣 What is a CSRF Attack?
+CSRF is an attack where a malicious website tricks a logged-in user into performing unwanted actions on another 
+site where they are authenticated.
+
+Let’s say you are logged into your bank (mybank.com), and there is a money transfer form:
+
+<form action="https://mybank.com/transfer" method="POST">
+    <input type="hidden" name="to" value="attacker_account">
+    <input type="hidden" name="amount" value="10000">
+    <input type="submit" value="Send Money">
+</form>
+Now imagine the attacker sends you a phishing email with a hidden form like the above, and tricks you into clicking 
+it while you're still logged in to your bank.
+
+Result?
+➡️ You unknowingly send ₹10,000 to the attacker!
+
+🔐 How Flask-WTF Prevents This
+Flask-WTF adds a CSRF token to your form. This is a random, secret value stored in your session and sent along 
+with every POST request.
+
+ ****A CSRF token is a string that is tied to a user's session but is not submitted automatically. 
+ A website proceeds only when it receives a valid CSRF token along with the cookies, since there is no way for 
+ an attacker to know a user specific token, the attacker can not perform actions on user's behalf.****
+
+
+
+🔌 Flask-WTF is a Flask extension that:
+Feature	What it Does
+🔒 CSRF protection	-:Adds a hidden token to prevent cross-site request forgery attacks
+🧼 Form validation	-:Validates inputs like “required”, “length”, “email”, etc.
+🧾 Clean form definition-:	You define forms in Python classes instead of raw HTML
+🔁 Data binding	Auto-fills-: form with data from DB or request (form = Form(obj=record))
+🚫 Error handling	-:Displays validation errors automatically in template
