@@ -33,8 +33,16 @@ def add():
         
 
 @app.route('/edit/<int:id>',methods=['GET','POST'])
-def edit():
-    pass
+def edit(id):
+    emp_data=Employee_table.query.get_or_404(id)
+    form=EmployeeForm(obj=emp_data)
+    if form.validate_on_submit():
+        emp_data.name=form.name.data
+        emp_data.department=form.department.data
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('form_edit.html',form=form)
+    
 
 @app.route('/delete/<int:id>',methods=['POST'])
 def delete():
