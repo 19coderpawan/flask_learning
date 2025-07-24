@@ -1,0 +1,35 @@
+
+💣@app.route('/add',methods=['GET','POST'])
+def add():
+    form=EmployeeForm()
+    if form.validata_on_submit():
+        emp_record=Employee_table(name=form.name.data,department=form.department.data)
+        db.session.add(emp_record)
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('add.html')
+
+*****Explanation.****
+form = StudentForm()
+->This creates an instance of your form (defined using FlaskForm). It will render the form fields and handle validation.
+
+if form.validate_on_submit():
+->This checks two things:
+->The request is a POST
+->All fields pass validation (e.g., DataRequired() is satisfied)
+
+new_student = Student(...)
+->Creates a new Student model instance with data from the form (form.name.data, form.branch.data).
+->.data is a property provided by WTForms, which stores the actual value entered by the user into that specific 
+field after form submission.
+->form.name is a StringField object.
+
+
+db.session.add(...) and db.session.commit()
+->Adds the new student to the database and saves the changes.
+
+redirect(url_for('index'))
+->After submission, it redirects to the home page (or wherever the 'index' route points).
+
+return render_template(...)
+->If the request is GET, or if form validation fails, it renders the form page again.

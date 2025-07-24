@@ -1,5 +1,6 @@
 from flask import Flask,request,redirect,url_for,render_template
 from flask_sqlalchemy import SQLAlchemy
+from form import EmployeeForm
 app=Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///emp.db'
@@ -21,7 +22,15 @@ def home():
 
 @app.route('/add',methods=['GET','POST'])
 def add():
-    pass
+    form=EmployeeForm()
+    if form.validata_on_submit():
+        emp_record=Employee_table(name=form.name.data,department=form.department.data)
+        db.session.add(emp_record)
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('add.html')
+    
+        
 
 @app.route('/edit/<int:id>',methods=['GET','POST'])
 def edit():
