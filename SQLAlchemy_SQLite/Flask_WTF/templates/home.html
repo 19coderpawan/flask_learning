@@ -8,8 +8,8 @@
         <ul>
             {% for emp in emp_data %}
              <li>{{emp.name}}  -----   {{emp.department}}</li>
-             <a href="{{url_for('add',id=emp.id)}}">ADD</a>
             {% endfor %}
+            <a href="{{url_for('add')}}">ADD</a>
         </ul>
     </body>
 </html>

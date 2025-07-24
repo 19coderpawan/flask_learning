@@ -23,12 +23,12 @@ def home():
 @app.route('/add',methods=['GET','POST'])
 def add():
     form=EmployeeForm()
-    if form.validata_on_submit():
+    if form.validate_on_submit():
         emp_record=Employee_table(name=form.name.data,department=form.department.data)
         db.session.add(emp_record)
         db.session.commit()
         return redirect(url_for('home'))
-    return render_template('add.html')
+    return render_template('add.html',form=form)
     
         
 

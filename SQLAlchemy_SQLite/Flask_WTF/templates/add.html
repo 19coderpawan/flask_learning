@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>add emp data</title>
+    </head>
+    <body>
+        <h1>Add your data in Form-:</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.name.label }}  {{ form.name() }}
+            {{ form.department.label }} {{ form.department() }}
+            {{ form.submit() }}
+        </form>
+    </body>
+</html>
