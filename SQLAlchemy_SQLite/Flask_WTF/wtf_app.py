@@ -44,8 +44,8 @@ def edit(id):
     return render_template('form_edit.html',form=form)
     
 
-@app.route('/delete/<int:id>',methods=['POST'])
-def delete():
+@app.route('/delete/<int:id>',methods=['GET'])
+def delete(id):
     emp_data=Employee_table.query.get_or_404(id)
     db.session.delete(emp_data)
     db.session.commit()
