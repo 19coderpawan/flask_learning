@@ -44,3 +44,22 @@ Feature	What it Does
 🧾 Clean form definition-:	You define forms in Python classes instead of raw HTML
 🔁 Data binding	Auto-fills-: form with data from DB or request (form = Form(obj=record))
 🚫 Error handling	-:Displays validation errors automatically in template
+
+***to handle error in flask(in a way that enhances the user experience***
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('404.html'), 404
+
+**in the html file***
+<!-- templates/404.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page Not Found</title>
+</head>
+<body>
+    <h1>Oops! Page Not Found (404)</h1>
+    <p>The page you're looking for doesn't exist.</p>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+</body>
+</html>    
