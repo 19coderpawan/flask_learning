@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField,TextAreaField,DateField
 from wtforms.validators import DataRequired
+from datetime import date
 
 app=Flask(__name__)
 
@@ -16,12 +17,27 @@ class Notes_Table(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     Title=db.Column(db.String(100),nullable=False)
     Content=db.Column(db.Text,nullable=False)
+    Date=db.Column(db.Date,nullable=False,default=date.today)
 
 class Notes_Form(FlaskForm):
     date=DateField('Date',format='%Y-%m-%d',default=date.today,validators=[DataRequired()])
     title=StringField('Title',validators=[DataRequired()])
     content=TextAreaField('Content',validators=[DataRequired()])
     submit=SubmitField('Submit')
+
+
+@app.route('/',methods=['GET'])
+def home():
+    data=Notes_Table.query.all()
+    return render_template('home.html',data=data)   
+
+@app.route('/add',methods=['GET','POST'])
+def add():
+    form=Notes_Form()
+    if request.method=='POST':
+        pass
+    return render_template('Add_notes.html',form=form)
+ 
 
    
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <titl>ADD new Note</titl>
+    </head>
+    <body>
+        <h1>New Day-:</h1>
+        <form>
+            {{form.hidden_tag()}}
+            {{form.date.label}} ----- {{form.date()}}<br><br>
+            {{form.title.label}} ----- {{form.title()}}<br><br>
+            {{form.content.label}} ----- {{form.content()}}<br><br>
+            {{form.submit.label}} ----- {{form.submit()}}<br><br>
+        </form>
+    </body>
+</html>
