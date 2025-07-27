@@ -1,6 +1,7 @@
 from flask import Flask,redirect,request,render_template,url_for
 from flask_sqlalchemy import SQLAlchemy
-from wtforms import StringField,SubmitField
+from flask_wtf import FlaskForm
+from wtforms import StringField,SubmitField,TextAreaField,DateField
 from wtforms.validators import DataRequired
 
 app=Flask(__name__)
@@ -15,6 +16,12 @@ class Notes_Table(db.Model):
     id=db.Column(db.Integer,primary_key=True)
     Title=db.Column(db.String(100),nullable=False)
     Content=db.Column(db.Text,nullable=False)
+
+class Notes_Form(FlaskForm):
+    date=DateField('Date',format='%Y-%m-%d',default=date.today,validators=[DataRequired()])
+    title=StringField('Title',validators=[DataRequired()])
+    content=TextAreaField('Content',validators=[DataRequired()])
+    submit=SubmitField('Submit')
 
    
 
