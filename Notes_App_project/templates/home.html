@@ -5,9 +5,16 @@
     </head>
     <body>
         <h1>My Daily Notes</h1>
-        <h2>{{data.date}}</h2>
-        <h3>{{data.title}}</h3>
-        <div>{{data.content}}</div>
+        <ul>
+        {% for d in data %}
+        <li><h2>{{d.Date}}</h2></li>
+        <li><h3>{{d.Title}}</h3></li>
+        <li><div>{{d.Content}}</div></li><br>
+        <a href="{{url_for('add')}}">Edit</a> <br>
+        <a href="{{url_for('add')}}">Delete</a>
+        {% endfor %}
+        <hr>
+        </ul>
         
     </body>
 </html>

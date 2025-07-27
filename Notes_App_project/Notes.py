@@ -34,8 +34,12 @@ def home():
 @app.route('/add',methods=['GET','POST'])
 def add():
     form=Notes_Form()
-    if request.method=='POST':
-        pass
+    if form.validate_on_submit():
+        new_data=Notes_Table(Title=form.title.data,Content=form.content.data,Date=form.date.data)
+        db.session.add(new_data)
+        db.session.commit()
+        return redirect(url_for('home'))
+        
     return render_template('Add_notes.html',form=form)
  
 
