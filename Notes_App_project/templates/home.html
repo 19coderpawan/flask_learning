@@ -8,16 +8,17 @@
         <h2>
             <a href="{{url_for('add')}}">Add new Day.</a>
         </h2>
-        <ul>
+        <ol type="1" style="font-size: medium;">
         {% for d in data %}
         <li><h2>{{d.Date}}</h2></li>
-        <li><h3>{{d.Title}}</h3></li>
-        <li><div>{{d.Content}}</div></li><br>
-        <a href="{{url_for('edit',id=d.id)}}">Edit</a> <br>
-        <a href="{{url_for('add')}}">Delete</a>
-        {% endfor %}
+        <u><h3>{{d.Title}}</h3></u><br>
+        <div><p style="color: red; font-size: medium; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{d.Content}}</p></div><br><br>
+        <a href="{{url_for('edit',id=d.id)}}">Edit</a> <br><br>
+        <a href="{{url_for('delete',id=d.id)}}">Delete</a>
         <hr>
-        </ul>
+        {% endfor %}
+        
+        </ol>
         
     </body>
 </html>

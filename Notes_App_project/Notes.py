@@ -54,6 +54,13 @@ def edit(id):
         return redirect(url_for('home'))
     return render_template('edit_notes.html',form=form)
 
+@app.route('/delete/<int:id>')
+def delete(id):
+    data=Notes_Table.query.get_or_404(id)
+    db.session.delete(data)
+    db.session.commit()
+    return redirect(url_for('home'))
+
     
  
 
