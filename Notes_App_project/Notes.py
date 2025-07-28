@@ -20,10 +20,10 @@ class Notes_Table(db.Model):
     Date=db.Column(db.Date,nullable=False,default=date.today)
 
 class Notes_Form(FlaskForm):
-    date=DateField('Date',format='%Y-%m-%d',default=date.today,validators=[DataRequired()])
-    title=StringField('Title',validators=[DataRequired()])
-    content=TextAreaField('Content',validators=[DataRequired()])
-    submit=SubmitField('Submit')
+    Date=DateField('Date',format='%Y-%m-%d',default=date.today,validators=[DataRequired()])
+    Title=StringField('Title',validators=[DataRequired()])
+    Content=TextAreaField('Content',validators=[DataRequired()])
+    Submit=SubmitField('Submit')
 
 
 @app.route('/',methods=['GET'])
@@ -35,7 +35,7 @@ def home():
 def add():
     form=Notes_Form()
     if form.validate_on_submit():
-        new_data=Notes_Table(Title=form.title.data,Content=form.content.data,Date=form.date.data)
+        new_data=Notes_Table(Title=form.Title.data,Content=form.Content.data,Date=form.Date.data)
         db.session.add(new_data)
         db.session.commit()
         return redirect(url_for('home'))
@@ -45,11 +45,11 @@ def add():
 @app.route('/edit/<int:id>',methods=['GET','POST'])
 def edit(id):
     data_form=Notes_Table.query.get_or_404(id)
-    form=Notes_Form()
+    form=Notes_Form(obj=data_form)
     if form.validate_on_submit():
-        data_form.Date=form.date.data
-        data_form.Title=form.title.data
-        data_form.Content=form.content.data
+        data_form.Date=form.Date.data
+        data_form.Title=form.Title.data
+        data_form.Content=form.Content.data
         db.session.commit()
         return redirect(url_for('home'))
     return render_template('edit_notes.html',form=form)
