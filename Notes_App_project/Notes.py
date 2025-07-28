@@ -41,6 +41,20 @@ def add():
         return redirect(url_for('home'))
         
     return render_template('Add_notes.html',form=form)
+
+@app.route('/edit/<int:id>',methods=['GET','POST'])
+def edit(id):
+    data_form=Notes_Table.query.get_or_404(id)
+    form=Notes_Form()
+    if form.validate_on_submit():
+        data_form.Date=form.date.data
+        data_form.Title=form.title.data
+        data_form.Content=form.content.data
+        db.session.commit()
+        return redirect(url_for('home'))
+    return render_template('edit_notes.html',form=form)
+
+    
  
 
    

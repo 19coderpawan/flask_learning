@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit the Notes</title>
+    </head>
+    <body>
+        <h1>Edit your Notes-:</h1>
+        <form method="POST">
+            {{form.hidden_tag()}}
+            {{form.date.label}} --- {{form.date()}}<br>
+            {{form.title.label}} --- {{form.title()}}<br>
+            {{form.content.label}} --- {{form.content()}}<br>
+            <b>Edit</b> --- {{form.submit()}}
+        </form>
+    </body>
+</html>
